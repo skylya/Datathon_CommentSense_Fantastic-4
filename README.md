@@ -17,11 +17,7 @@
 - **KPI Summary:** Displays key insights and distributions for spam, sentiment, and categories.
 
 ---
+## Live App
 
-## How to Run
-
-1. Make sure you have Python 3.10+ installed.
-2. Install required packages:
-
-```bash
-pip install -r requirements.txt
+You can access the live Streamlit app here:  
+[CommentSense - AI Comment Analysis](https://datathoncommentsensefantastic-4-jzkkfutcga2piaq8smhzvz.streamlit.app)
