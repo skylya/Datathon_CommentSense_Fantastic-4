@@ -53,7 +53,6 @@ data["cleaned_comment"] = data["textOriginal"].apply(clean_text)
 st.header("Language & Cleaning")
 sample_text = st.text_input("Enter a comment to test language + cleaning:", "I love this product!!! 😍😍😍")
 if sample_text:
-    st.write("Detected Language:", detect_language(sample_text))
     st.write("Cleaned Text:", clean_text(sample_text))
 
 # Emoji helper
@@ -256,5 +255,6 @@ sentiment_per_cat = pd.crosstab(
 ) * 100
 st.subheader("4. Sentiment Breakdown per Category (%)")
 st.dataframe(sentiment_per_cat.round(2))
+
 
 
