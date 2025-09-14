@@ -222,9 +222,31 @@ if user_text:
     pred = clf.predict(X_new)[0]
     st.write("ML Predicted Sentiment:", pred)
     
-st.header("Sentiment Distribution")
-fig, ax = plt.subplots()
-data["sentiment"].value_counts().plot(kind="bar", ax=ax)
-st.pyplot(fig)
+# ==============================
+# KPI Summary Report (Streamlit)
+# ==============================
+st.header("KPI Summary Report")
 
+# 1. Spam vs Quality
+spam_dist = data["is_spam"].value_counts(normalize=True) * 100
+st.subheader("1. Spam vs Quality (%)")
+st.bar_chart(spam_dist)
 
+# 2. Distribution by Category
+category_dist = data["category"].value_counts(normalize=True) * 100
+st.subheader("2. Comment Distribution by Category (%)")
+st.bar_chart(category_dist)
+
+# 3. Sentiment Breakdown (overall)
+sentiment_dist = data["sentiment"].value_counts(normalize=True) * 100
+st.subheader("3. Overall Sentiment Distribution (%)")
+st.bar_chart(sentiment_dist)
+
+# 4. Sentiment within each Category
+sentiment_per_cat = pd.crosstab(
+    data["category"], 
+    data["sentiment"], 
+    normalize="index"
+) * 100
+st.subheader("4. Sentiment Breakdown per Category (%)")
+st.dataframe(sentiment_per_cat.round(2))
