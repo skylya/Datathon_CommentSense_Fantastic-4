@@ -29,6 +29,15 @@ def detect_language(text):
     except:
         return "unknown"
 
+# New column for language
+data["language"] = data["textOriginal"].apply(detect_language)
+
+print("Language distribution:")
+print(data["language"].value_counts().head(10))  # see top 10 detected languages
+
+# Filter for English only 
+data = data[data["language"] == "en"]
+
 def clean_text(text):
     text = str(text).lower()
     text = re.sub(r"http\S+|www\S+|https\S+", '', text)
@@ -217,4 +226,5 @@ st.header("Sentiment Distribution")
 fig, ax = plt.subplots()
 data["sentiment"].value_counts().plot(kind="bar", ax=ax)
 st.pyplot(fig)
+
 
