@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 # ========== Load Dataset ==========
 @st.cache_data
 def load_data():
-    return pd.read_csv(r"D:\Datathon\DatasetCombined\CombinedComments.csv")
+    return pd.read_csv("CombinedComments.csv")
 
 data = load_data()
 
@@ -217,3 +217,4 @@ st.header("Sentiment Distribution")
 fig, ax = plt.subplots()
 data["sentiment"].value_counts().plot(kind="bar", ax=ax)
 st.pyplot(fig)
+
