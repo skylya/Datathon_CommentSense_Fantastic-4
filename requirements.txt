@@ -1,6 +1,1 @@
-streamlit
-pandas
-textblob
-langdetect
-scikit-learn
-matplotlib
+
