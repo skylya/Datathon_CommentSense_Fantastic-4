@@ -136,6 +136,9 @@ def is_spam(text):
 
     return False
 
+# Apply spam detection
+data["is_spam"] = data["cleaned_comment"].apply(is_spam)
+
 st.header("Spam Detection")
 if user_text:
     st.write("Spam?", is_spam(user_text))
@@ -250,3 +253,4 @@ sentiment_per_cat = pd.crosstab(
 ) * 100
 st.subheader("4. Sentiment Breakdown per Category (%)")
 st.dataframe(sentiment_per_cat.round(2))
+
