@@ -200,6 +200,9 @@ def categorize_comment(text):
 
     return "other"
 
+# Apply categorization
+data["category"] = data["cleaned_comment"].apply(categorize_comment)
+
 st.header("Comment Categorization")
 if user_text:
     st.write("Predicted Category:", categorize_comment(user_text))
@@ -253,4 +256,5 @@ sentiment_per_cat = pd.crosstab(
 ) * 100
 st.subheader("4. Sentiment Breakdown per Category (%)")
 st.dataframe(sentiment_per_cat.round(2))
+
 
